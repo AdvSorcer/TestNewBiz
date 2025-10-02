@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新事業超市 - 新鮮直送，美味零食，生活百貨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Microsoft JhengHei', Arial, sans-serif; 
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Header Styles */
+        header { 
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white; 
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .logo a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        nav ul { 
+            list-style: none; 
+            display: flex; 
+            gap: 30px;
+        }
+        
+        nav a { 
+            color: white; 
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .utility-icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .search-box {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 25px;
+            outline: none;
+            width: 200px;
+        }
+        
+        .utility-icons a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .utility-icons a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        /* Hero Section */
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/挪威鮭魚.png');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 20px; 
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white; 
+            padding: 15px 40px; 
+            text-decoration: none; 
+            display: inline-block;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        /* Container */
+        .container { 
+            max-width: 1200px; 
+            margin: 40px auto; 
+            padding: 0 20px; 
+        }
+        
+        /* Section Headers */
+        section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+        
+        /* Category Grid */
+        .category-links { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            margin-bottom: 60px; 
+        }
+        
+        .category-card { 
+            background: white;
+            border-radius: 15px;
+            padding: 30px; 
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .category-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid #f8f9fa;
+        }
+        
+        .category-card h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        /* Product Grid */
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; 
+            margin-bottom: 60px; 
+        }
+        
+        .product-card { 
+            background: white;
+            border-radius: 15px;
+            padding: 20px; 
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-card img {
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .product-card h4 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .product-card p {
+            font-size: 1.5rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .product-card button {
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card button:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Trust Area */
+        #trust-area {
+            background: #f8f9fa;
+            padding: 60px 40px;
+            border-radius: 15px;
+            margin: 60px 0;
+        }
+        
+        #trust-area h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial p {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .newsletter {
+            text-align: center;
+        }
+        
+        .newsletter input {
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            width: 300px;
+            margin-right: 10px;
+            outline: none;
+        }
+        
+        .newsletter button {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer { 
+            background: #2c3e50;
+            color: white; 
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-content h4 {
+            margin-bottom: 20px;
+            color: #ecf0f1;
+        }
+        
+        .footer-content ul {
+            list-style: none;
+        }
+        
+        .footer-content li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-content a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-content a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            margin-top: 30px;
+            color: #bdc3c7;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .category-links,
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1><a href="/">中嘉超市</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">首頁</a></li>
+                    <li><a href="#">魚/海鮮</a></li>
+                    <li><a href="#">零食</a></li>
+                    <li><a href="#">百貨/雜貨</a></li>
+                    <li><a href="#">最新消息</a></li>
+                </ul>
+            </nav>
+            <div class="utility-icons">
+                <input type="text" placeholder="搜索商品..." class="search-box">
+                <a href="#">會員</a>
+                <a href="#">購物車 (0)</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h2>🎉 本週主打！挪威鮭魚特價 $99 🎉</h2>
+        <p>新鮮直送，限時限量，立即搶購！</p>
+        <a href="#" class="cta-button">立即搶購</a>
+    </section>
+
+    <div class="container">
+
+        <section id="quick-categories">
+            <h2>🛒 探索我們的商品分類</h2>
+            <div class="category-links">
+                <div class="category-card">
+                    <img src="img/海鮮.png" alt="魚/海鮮">
+                    <h3>魚/海鮮</h3>
+                    <p>新鮮海產，品質保證</p>
+                </div>
+                <div class="category-card">
+                    <img src="img/零食.png" alt="零食">
+                    <h3>零食</h3>
+                    <p>美味零食，滿足味蕾</p>
+                </div>
+                <div class="category-card">
+                    <img src="img/百貨.png" alt="百貨/雜貨">
+                    <h3>百貨/雜貨</h3>
+                    <p>生活用品，應有盡有</p>
+                </div>
+            </div>
+        </section>
+        
+        <hr>
+
+        <section id="latest-products">
+            <h2>✨ 最新商品上架</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="img/挪威鮭魚.png" alt="挪威鮭魚">
+                    <h4>挪威鮭魚</h4>
+                    <p>$99</p>
+                    <button>加入購物車</button>
+                </div>
+                <div class="product-card">
+                    <img src="img/零食.jpg" alt="精選零食">
+                    <h4>精選零食組合</h4>
+                    <p>$199</p>
+                    <button>加入購物車</button>
+                </div>
+                <div class="product-card">
+                    <img src="img/百貨.png" alt="生活百貨">
+                    <h4>生活百貨組合</h4>
+                    <p>$299</p>
+                    <button>加入購物車</button>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="trust-area">
+            <h2>⭐ 顧客好評</h2>
+            <div class="testimonial">
+                <p>"魚貨品質真的沒話說，回購好幾次了！"</p>
+                <p>— 忠實顧客 A 先生</p>
+            </div>
+            
+            <div class="newsletter">
+                <h2>📧 訂閱電子報</h2>
+                <p>掌握最新優惠與食譜。</p>
+                <input type="email" placeholder="請輸入您的 Email">
+                <button>立即訂閱</button>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-nav">
+                <h4>網站連結</h4>
+                <ul>
+                    <li><a href="#">關於我們</a></li>
+                    <li><a href="#">聯絡我們</a></li>
+                    <li><a href="#">退換貨政策</a></li>
+                </ul>
+            </div>
+            <div class="payment-info">
+                <h4>付款與物流</h4>
+                <p>接受 Visa, MasterCard 等</p>
+                <p>全台宅配，快速到貨</p>
+            </div>
+            <div class="social-media">
+                <h4>追蹤我們</h4>
+                <p><a href="#">Facebook</a> | <a href="#">Instagram</a></p>
+                <p>Line: @中嘉超市</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 中嘉超市. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
